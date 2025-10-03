@@ -1,0 +1,276 @@
+Starting enum4linux v0.9.1 ( http://labs.portcullis.co.uk/application/enum4linux/ ) on Fri Oct  3 13:16:40 2025
+
+[34m =========================================( [0m[32mTarget Information[0m[34m )=========================================
+
+[0mTarget ........... 192.168.56.101
+RID Range ........ 500-550,1000-1050
+Username ......... ''
+Password ......... ''
+Known Usernames .. administrator, guest, krbtgt, domain admins, root, bin, none
+
+
+[34m ===========================( [0m[32mEnumerating Workgroup/Domain on 192.168.56.101[0m[34m )===========================
+
+[0m[33m
+[+] [0m[32mGot domain/workgroup name: WORKGROUP
+
+[0m
+[34m ===============================( [0m[32mNbtstat Information for 192.168.56.101[0m[34m )===============================
+
+[0mLooking up status of 192.168.56.101
+	METASPLOITABLE  <00> -         B <ACTIVE>  Workstation Service
+	METASPLOITABLE  <03> -         B <ACTIVE>  Messenger Service
+	METASPLOITABLE  <20> -         B <ACTIVE>  File Server Service
+	..__MSBROWSE__. <01> - <GROUP> B <ACTIVE>  Master Browser
+	WORKGROUP       <00> - <GROUP> B <ACTIVE>  Domain/Workgroup Name
+	WORKGROUP       <1d> -         B <ACTIVE>  Master Browser
+	WORKGROUP       <1e> - <GROUP> B <ACTIVE>  Browser Service Elections
+
+	MAC Address = 00-00-00-00-00-00
+
+[34m ==================================( [0m[32mSession Check on 192.168.56.101[0m[34m )==================================
+
+[0m[33m
+[+] [0m[32mServer 192.168.56.101 allows sessions using username '', password ''
+
+[0m
+[34m ===============================( [0m[32mGetting domain SID for 192.168.56.101[0m[34m )===============================
+
+[0mDomain Name: WORKGROUP
+Domain Sid: (NULL SID)
+[33m
+[+] [0m[32mCan't determine if host is part of domain or part of a workgroup
+
+[0m
+[34m ==================================( [0m[32mOS information on 192.168.56.101[0m[34m )==================================
+
+[0m[33m
+[E] [0m[31mCan't get OS info with smbclient
+
+[0m[33m
+[+] [0m[32mGot OS info for 192.168.56.101 from srvinfo: 
+[0m	METASPLOITABLE Wk Sv PrQ Unx NT SNT metasploitable server (Samba 3.0.20-Debian)
+	platform_id     :	500
+	os version      :	4.9
+	server type     :	0x9a03
+
+
+[34m ======================================( [0m[32mUsers on 192.168.56.101[0m[34m )======================================
+
+[0mindex: 0x1 RID: 0x3f2 acb: 0x00000011 Account: games	Name: games	Desc: (null)
+index: 0x2 RID: 0x1f5 acb: 0x00000011 Account: nobody	Name: nobody	Desc: (null)
+index: 0x3 RID: 0x4ba acb: 0x00000011 Account: bind	Name: (null)	Desc: (null)
+index: 0x4 RID: 0x402 acb: 0x00000011 Account: proxy	Name: proxy	Desc: (null)
+index: 0x5 RID: 0x4b4 acb: 0x00000011 Account: syslog	Name: (null)	Desc: (null)
+index: 0x6 RID: 0xbba acb: 0x00000010 Account: user	Name: just a user,111,,	Desc: (null)
+index: 0x7 RID: 0x42a acb: 0x00000011 Account: www-data	Name: www-data	Desc: (null)
+index: 0x8 RID: 0x3e8 acb: 0x00000011 Account: root	Name: root	Desc: (null)
+index: 0x9 RID: 0x3fa acb: 0x00000011 Account: news	Name: news	Desc: (null)
+index: 0xa RID: 0x4c0 acb: 0x00000011 Account: postgres	Name: PostgreSQL administrator,,,	Desc: (null)
+index: 0xb RID: 0x3ec acb: 0x00000011 Account: bin	Name: bin	Desc: (null)
+index: 0xc RID: 0x3f8 acb: 0x00000011 Account: mail	Name: mail	Desc: (null)
+index: 0xd RID: 0x4c6 acb: 0x00000011 Account: distccd	Name: (null)	Desc: (null)
+index: 0xe RID: 0x4ca acb: 0x00000011 Account: proftpd	Name: (null)	Desc: (null)
+index: 0xf RID: 0x4b2 acb: 0x00000011 Account: dhcp	Name: (null)	Desc: (null)
+index: 0x10 RID: 0x3ea acb: 0x00000011 Account: daemon	Name: daemon	Desc: (null)
+index: 0x11 RID: 0x4b8 acb: 0x00000011 Account: sshd	Name: (null)	Desc: (null)
+index: 0x12 RID: 0x3f4 acb: 0x00000011 Account: man	Name: man	Desc: (null)
+index: 0x13 RID: 0x3f6 acb: 0x00000011 Account: lp	Name: lp	Desc: (null)
+index: 0x14 RID: 0x4c2 acb: 0x00000011 Account: mysql	Name: MySQL Server,,,	Desc: (null)
+index: 0x15 RID: 0x43a acb: 0x00000011 Account: gnats	Name: Gnats Bug-Reporting System (admin)	Desc: (null)
+index: 0x16 RID: 0x4b0 acb: 0x00000011 Account: libuuid	Name: (null)	Desc: (null)
+index: 0x17 RID: 0x42c acb: 0x00000011 Account: backup	Name: backup	Desc: (null)
+index: 0x18 RID: 0xbb8 acb: 0x00000010 Account: msfadmin	Name: msfadmin,,,	Desc: (null)
+index: 0x19 RID: 0x4c8 acb: 0x00000011 Account: telnetd	Name: (null)	Desc: (null)
+index: 0x1a RID: 0x3ee acb: 0x00000011 Account: sys	Name: sys	Desc: (null)
+index: 0x1b RID: 0x4b6 acb: 0x00000011 Account: klog	Name: (null)	Desc: (null)
+index: 0x1c RID: 0x4bc acb: 0x00000011 Account: postfix	Name: (null)	Desc: (null)
+index: 0x1d RID: 0xbbc acb: 0x00000011 Account: service	Name: ,,,	Desc: (null)
+index: 0x1e RID: 0x434 acb: 0x00000011 Account: list	Name: Mailing List Manager	Desc: (null)
+index: 0x1f RID: 0x436 acb: 0x00000011 Account: irc	Name: ircd	Desc: (null)
+index: 0x20 RID: 0x4be acb: 0x00000011 Account: ftp	Name: (null)	Desc: (null)
+index: 0x21 RID: 0x4c4 acb: 0x00000011 Account: tomcat55	Name: (null)	Desc: (null)
+index: 0x22 RID: 0x3f0 acb: 0x00000011 Account: sync	Name: sync	Desc: (null)
+index: 0x23 RID: 0x3fc acb: 0x00000011 Account: uucp	Name: uucp	Desc: (null)
+
+user:[games] rid:[0x3f2]
+user:[nobody] rid:[0x1f5]
+user:[bind] rid:[0x4ba]
+user:[proxy] rid:[0x402]
+user:[syslog] rid:[0x4b4]
+user:[user] rid:[0xbba]
+user:[www-data] rid:[0x42a]
+user:[root] rid:[0x3e8]
+user:[news] rid:[0x3fa]
+user:[postgres] rid:[0x4c0]
+user:[bin] rid:[0x3ec]
+user:[mail] rid:[0x3f8]
+user:[distccd] rid:[0x4c6]
+user:[proftpd] rid:[0x4ca]
+user:[dhcp] rid:[0x4b2]
+user:[daemon] rid:[0x3ea]
+user:[sshd] rid:[0x4b8]
+user:[man] rid:[0x3f4]
+user:[lp] rid:[0x3f6]
+user:[mysql] rid:[0x4c2]
+user:[gnats] rid:[0x43a]
+user:[libuuid] rid:[0x4b0]
+user:[backup] rid:[0x42c]
+user:[msfadmin] rid:[0xbb8]
+user:[telnetd] rid:[0x4c8]
+user:[sys] rid:[0x3ee]
+user:[klog] rid:[0x4b6]
+user:[postfix] rid:[0x4bc]
+user:[service] rid:[0xbbc]
+user:[list] rid:[0x434]
+user:[irc] rid:[0x436]
+user:[ftp] rid:[0x4be]
+user:[tomcat55] rid:[0x4c4]
+user:[sync] rid:[0x3f0]
+user:[uucp] rid:[0x3fc]
+
+[34m ================================( [0m[32mShare Enumeration on 192.168.56.101[0m[34m )================================
+
+[0m
+	Sharename       Type      Comment
+	---------       ----      -------
+	print$          Disk      Printer Drivers
+	tmp             Disk      oh noes!
+	opt             Disk      
+	IPC$            IPC       IPC Service (metasploitable server (Samba 3.0.20-Debian))
+	ADMIN$          IPC       IPC Service (metasploitable server (Samba 3.0.20-Debian))
+Reconnecting with SMB1 for workgroup listing.
+
+	Server               Comment
+	---------            -------
+
+	Workgroup            Master
+	---------            -------
+	WORKGROUP            METASPLOITABLE
+[33m
+[+] [0m[32mAttempting to map shares on 192.168.56.101
+
+[0m//192.168.56.101/print$	[35mMapping: [0mDENIED[35m Listing: [0mN/A[35m Writing: [0mN/A
+//192.168.56.101/tmp	[35mMapping: [0mOK[35m Listing: [0mOK[35m Writing: [0mN/A
+//192.168.56.101/opt	[35mMapping: [0mDENIED[35m Listing: [0mN/A[35m Writing: [0mN/A
+[33m
+[E] [0m[31mCan't understand response:
+
+[0mNT_STATUS_NETWORK_ACCESS_DENIED listing \*
+//192.168.56.101/IPC$	[35mMapping: [0mN/A[35m Listing: [0mN/A[35m Writing: [0mN/A
+//192.168.56.101/ADMIN$	[35mMapping: [0mDENIED[35m Listing: [0mN/A[35m Writing: [0mN/A
+
+[34m ===========================( [0m[32mPassword Policy Information for 192.168.56.101[0m[34m )===========================
+
+[0m
+
+[+] Attaching to 192.168.56.101 using a NULL share
+
+[+] Trying protocol 139/SMB...
+
+[+] Found domain(s):
+
+	[+] METASPLOITABLE
+	[+] Builtin
+
+[+] Password Info for Domain: METASPLOITABLE
+
+	[+] Minimum password length: 5
+	[+] Password history length: None
+	[+] Maximum password age: Not Set
+	[+] Password Complexity Flags: 000000
+
+		[+] Domain Refuse Password Change: 0
+		[+] Domain Password Store Cleartext: 0
+		[+] Domain Password Lockout Admins: 0
+		[+] Domain Password No Clear Change: 0
+		[+] Domain Password No Anon Change: 0
+		[+] Domain Password Complex: 0
+
+	[+] Minimum password age: None
+	[+] Reset Account Lockout Counter: 30 minutes 
+	[+] Locked Account Duration: 30 minutes 
+	[+] Account Lockout Threshold: None
+	[+] Forced Log off Time: Not Set
+
+
+[33m
+[+] [0m[32mRetieved partial password policy with rpcclient:
+
+
+[0mPassword Complexity: Disabled
+Minimum Password Length: 0
+
+
+[34m ======================================( [0m[32mGroups on 192.168.56.101[0m[34m )======================================
+
+[0m[33m
+[+] [0m[32mGetting builtin groups:
+
+[0m[33m
+[+] [0m[32m Getting builtin group memberships:
+
+[0m[33m
+[+] [0m[32m Getting local groups:
+
+[0m[33m
+[+] [0m[32m Getting local group memberships:
+
+[0m[33m
+[+] [0m[32m Getting domain groups:
+
+[0m[33m
+[+] [0m[32m Getting domain group memberships:
+
+[0m
+[34m =================( [0m[32mUsers on 192.168.56.101 via RID cycling (RIDS: 500-550,1000-1050)[0m[34m )=================
+
+[0m[33m
+[I] [0m[36mFound new SID: 
+[0mS-1-5-21-1042354039-2475377354-766472396
+[33m
+[+] [0m[32mEnumerating users using SID S-1-5-21-1042354039-2475377354-766472396 and logon username '', password ''
+
+[0mS-1-5-21-1042354039-2475377354-766472396-500 METASPLOITABLE\Administrator (Local User)
+S-1-5-21-1042354039-2475377354-766472396-501 METASPLOITABLE\nobody (Local User)
+S-1-5-21-1042354039-2475377354-766472396-512 METASPLOITABLE\Domain Admins (Domain Group)
+S-1-5-21-1042354039-2475377354-766472396-513 METASPLOITABLE\Domain Users (Domain Group)
+S-1-5-21-1042354039-2475377354-766472396-514 METASPLOITABLE\Domain Guests (Domain Group)
+S-1-5-21-1042354039-2475377354-766472396-1000 METASPLOITABLE\root (Local User)
+S-1-5-21-1042354039-2475377354-766472396-1001 METASPLOITABLE\root (Domain Group)
+S-1-5-21-1042354039-2475377354-766472396-1002 METASPLOITABLE\daemon (Local User)
+S-1-5-21-1042354039-2475377354-766472396-1003 METASPLOITABLE\daemon (Domain Group)
+S-1-5-21-1042354039-2475377354-766472396-1004 METASPLOITABLE\bin (Local User)
+S-1-5-21-1042354039-2475377354-766472396-1005 METASPLOITABLE\bin (Domain Group)
+S-1-5-21-1042354039-2475377354-766472396-1006 METASPLOITABLE\sys (Local User)
+S-1-5-21-1042354039-2475377354-766472396-1007 METASPLOITABLE\sys (Domain Group)
+S-1-5-21-1042354039-2475377354-766472396-1008 METASPLOITABLE\sync (Local User)
+S-1-5-21-1042354039-2475377354-766472396-1009 METASPLOITABLE\adm (Domain Group)
+S-1-5-21-1042354039-2475377354-766472396-1010 METASPLOITABLE\games (Local User)
+S-1-5-21-1042354039-2475377354-766472396-1011 METASPLOITABLE\tty (Domain Group)
+S-1-5-21-1042354039-2475377354-766472396-1012 METASPLOITABLE\man (Local User)
+S-1-5-21-1042354039-2475377354-766472396-1013 METASPLOITABLE\disk (Domain Group)
+S-1-5-21-1042354039-2475377354-766472396-1014 METASPLOITABLE\lp (Local User)
+S-1-5-21-1042354039-2475377354-766472396-1015 METASPLOITABLE\lp (Domain Group)
+S-1-5-21-1042354039-2475377354-766472396-1016 METASPLOITABLE\mail (Local User)
+S-1-5-21-1042354039-2475377354-766472396-1017 METASPLOITABLE\mail (Domain Group)
+S-1-5-21-1042354039-2475377354-766472396-1018 METASPLOITABLE\news (Local User)
+S-1-5-21-1042354039-2475377354-766472396-1019 METASPLOITABLE\news (Domain Group)
+S-1-5-21-1042354039-2475377354-766472396-1020 METASPLOITABLE\uucp (Local User)
+S-1-5-21-1042354039-2475377354-766472396-1021 METASPLOITABLE\uucp (Domain Group)
+S-1-5-21-1042354039-2475377354-766472396-1025 METASPLOITABLE\man (Domain Group)
+S-1-5-21-1042354039-2475377354-766472396-1026 METASPLOITABLE\proxy (Local User)
+S-1-5-21-1042354039-2475377354-766472396-1027 METASPLOITABLE\proxy (Domain Group)
+S-1-5-21-1042354039-2475377354-766472396-1031 METASPLOITABLE\kmem (Domain Group)
+S-1-5-21-1042354039-2475377354-766472396-1041 METASPLOITABLE\dialout (Domain Group)
+S-1-5-21-1042354039-2475377354-766472396-1043 METASPLOITABLE\fax (Domain Group)
+S-1-5-21-1042354039-2475377354-766472396-1045 METASPLOITABLE\voice (Domain Group)
+S-1-5-21-1042354039-2475377354-766472396-1049 METASPLOITABLE\cdrom (Domain Group)
+
+[34m ==============================( [0m[32mGetting printer info for 192.168.56.101[0m[34m )==============================
+
+[0mNo printers returned.
+
+
+enum4linux complete on Fri Oct  3 13:16:47 2025
+
