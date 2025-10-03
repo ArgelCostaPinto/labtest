@@ -46,3 +46,5 @@ Validação com smbclient:
     senha: msfadmin
     
 O acesso foi concedido, confirmando que a credencial funcionava no serviço SMB.
+
+Os três testes demonstraram de forma prática como serviços expostos com credenciais padrão ou fracas e sem proteções básicas são rapidamente comprometidos por ferramentas automatizadas, ao combinar enumeração cuidadosa e ataques em cadeia foi possivel validar acessos tanto em FTP quanto em formulários web e SMB, o que deixa claro que é essencial remover ou alterar contas e senhas padrão, reduzir a exposição de serviços desnecessários, manter os sistemas atualizados e revisar permissões e compartilhamentos para limitar o que realmente precisa ficar acessível, além disso, realizar varreduras e testes autorizados periodicamente ajuda a identificar e corrigir pontos fracos antes que sejam explorados por agentes maliciosos.
