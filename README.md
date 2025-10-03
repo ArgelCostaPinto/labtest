@@ -1,3 +1,5 @@
+Laboratório de teste utilizando Medusa
+
 Teste 1 — Ataque FTP com Medusa
 
 Na primeira atividade foi usado o Medusa para forçar logins no serviço FTP do alvo (192.168.56.101). A ideia foi simples: tentar combinações de usuários e senhas até encontrar uma que funcionasse.
