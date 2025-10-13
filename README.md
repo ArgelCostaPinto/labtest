@@ -5,7 +5,7 @@ Teste 1 — Ataque FTP com Medusa
 Na primeira atividade foi usado o Medusa para forçar logins no serviço FTP do alvo (192.168.56.101). A ideia foi simples: tentar combinações de usuários e senhas até encontrar uma que funcionasse.
 
 Comando usado:
-medusa -h 192.168.56.101 -U users.tet -P pass.txt -M ftp -t 6
+medusa -h 192.168.56.101 -U users.txt -P pass.txt -M ftp -t 6
 
 O Medusa rodou várias tentativas em paralelo contra o serviço FTP. No fim ele reportou sucesso com as credenciais Login:msfadmin,Senha:msfadmin. Para validar:
 
