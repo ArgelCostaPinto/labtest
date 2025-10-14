@@ -1,52 +1,66 @@
-Laboratório de teste utilizando Medusa
+Laboratório de Testes de Invasão com Medusa
+Este repositório documenta uma série de testes de penetração realizados com a ferramenta Medusa para demonstrar vulnerabilidades comuns em diferentes serviços. Os testes foram focados em ataques de força bruta e enumeração contra FTP, formulários web e SMB.
 
-Teste 1 — Ataque FTP com Medusa
+Teste 1 — Ataque de Força Bruta em FTP
+Nesta atividade, o objetivo foi forçar o login no serviço FTP do alvo (192.168.56.101) utilizando uma combinação de listas de usuários e senhas.
 
-Na primeira atividade foi usado o Medusa para forçar logins no serviço FTP do alvo (192.168.56.101). A ideia foi simples: tentar combinações de usuários e senhas até encontrar uma que funcionasse.
-
-Comando usado:
+Comando Utilizado
+bash
 medusa -h 192.168.56.101 -U users.txt -P pass.txt -M ftp -t 6
+Resultados e Validação
+O Medusa executou múltiplas tentativas em paralelo e reportou sucesso ao encontrar as credenciais:
 
-O Medusa rodou várias tentativas em paralelo contra o serviço FTP. No fim ele reportou sucesso com as credenciais Login:msfadmin,Senha:msfadmin. Para validar:
+Login: msfadmin
+Senha: msfadmin
+A validação foi feita acessando o serviço diretamente, o que confirmou o acesso:
 
+bash
 ftp 192.168.56.101
-  usuário: msfadmin
-  senha: msfadmin
+# Usuário: msfadmin
+# Senha: msfadmin
+Conclusão do Teste: Este cenário demonstra como contas com credenciais previsíveis ou padrão podem ser rapidamente exploradas por ferramentas automatizadas.
 
-O prompt aceitou o login — ou seja, a combinação encontrada realmente permitiu acesso ao serviço FTP. Foi um exemplo prático de como contas com credenciais previsíveis podem ser exploradas rápido por ferramentas automatizadas.
+Teste 2 — Força Bruta em Formulário Web (DVWA)
+O alvo foi a página de login da aplicação web DVWA (/dvwa/login.php). Após uma tentativa de login manual falhar, a requisição POST foi inspecionada para identificar os campos do formulário (username, password, Login).
 
-Teste 2 — Brute-force em formulário web (DVWA)
+Comando Utilizado
+O ataque foi direcionado ao endpoint do formulário, especificando o formato dos dados e a mensagem de falha.
 
-Aqui o alvo foi a página de login do DVWA (/dvwa/login.php). Foi testado um login manual primeiro (ex.: Argel / 123) e recebemos Login Failed. Mas, ao inspecionar a requisição no DevTools, vimos os campos do formulário: username, password e Login.
+bash
+medusa -h 192.168.56.101 -U users.txt -P pass.txt -M http \
+-m PAGE:'/dvwa/login.php' \
+-m FORM:'username=^USER^&password=^PASS^&login=Login' \
+-m 'FAIL=login failed' -t 6
+Resultados e Validação
+A ferramenta identificou as credenciais válidas:
 
-Foi montado um ataque direcionado ao POST do formulário com Medusa, especificando a página, o corpo do formulário e a string que indica falha:
+Login: admin
+Senha: password
+O acesso foi validado manualmente na página de login.
 
-Comando usado:
-  medusa -h 192.168.56.101 -U users.txt -P pass.txt -M http \
-    -m PAGE:'/dvwa/login.php' \
-    -m FORM:'username=^USER^&password=^PASS^&login=Login' \
-    -m 'FAIL=login failed' -t 6
+Conclusão do Teste: Aplicações web que não implementam proteções contra automação em seus formulários (como CAPTCHA ou bloqueio de IP) são altamente vulneráveis a ataques de força bruta.
 
-O Medusa varreu combinações e encontrou admin:password. Novamente, foi validado que o acesso era real. Esse teste mostra que, em aplicações web que não protegem o formulário contra tentativas automáticas, ataques de força bruta conseguem identificar credenciais válidas.
+Teste 3 — Enumeração SMB e Password Spraying
+Este exercício foi realizado em duas fases: primeiro, uma enumeração do serviço SMB para coletar informações e, em seguida, um ataque de password spraying usando os dados coletados.
 
-Teste 3 — Enumeração SMB + Password spraying (fluxo em cadeia)
+Fase 1: Enumeração
+O enum4linux foi usado para extrair nomes de usuários, workgroup e outros detalhes do alvo.
 
-Nesse exercício primeiro foi feita um enumeração do serviço SMB para coletar informações úteis (nomes, workgroup, possíveis usuários), depois esses dados foram usados para montar wordlists e executar um password spray.
+bash
+enum4linux -a 192.168.56.101 | tee enum4_output.txt
+Fase 2: Ataque com Medusa (SMB)
+Com base nos dados da enumeração, foram criadas listas de usuários (smb_user.txt) e senhas (senhas_spray.txt) para um ataque mais direcionado.
 
-Enumeração:
-  enum4linux -a 192.168.56.101 | tee enum4_output.txt
+bash
+medusa -h 192.168.56.101 -U smb_user.txt -P senhas_spray.txt -M smbnt -t 2 -T 50
+Resultados e Validação
+O Medusa encontrou as seguintes credenciais válidas para o serviço SMB:
 
-O output trouxe nomes e comentários que nos ajudaram a criar listas de usuários e senhas mais direcionadas.
+Login: msfadmin
+Senha: msfadmin
+A validação foi feita com o smbclient, que confirmou o acesso aos compartilhamentos.
 
-Ataque com Medusa (SMB):
-  medusa -h 192.168.56.101 -U smb_user.txt -P senhas_spray.txt -M smbnt -t 2 -T 50
-
-O Medusa retornou Login:msfadmin,Senha:msfadmin como credenciais válidas.
-
-Validação com smbclient:
-  smbclient -L //192.168.56.101 -U msfadmin
-    senha: msfadmin
-    
-O acesso foi concedido, confirmando que a credencial funcionava no serviço SMB.
-
-Os três testes demonstraram de forma prática como serviços expostos com credenciais padrão ou fracas e sem proteções básicas são rapidamente comprometidos por ferramentas automatizadas, ao combinar enumeração cuidadosa e ataques em cadeia foi possivel validar acessos tanto em FTP quanto em formulários web e SMB, o que deixa claro que é essencial remover ou alterar contas e senhas padrão, reduzir a exposição de serviços desnecessários, manter os sistemas atualizados e revisar permissões e compartilhamentos para limitar o que realmente precisa ficar acessível, além disso, realizar varreduras e testes autorizados periodicamente ajuda a identificar e corrigir pontos fracos antes que sejam explorados por agentes maliciosos.
+bash
+smbclient -L //192.168.56.101 -U msfadmin
+# Senha: msfadmin
+Conclusão do Teste: A combinação de enumeração e ataques em cadeia é extremamente eficaz. Coletar informações primeiro permite criar ataques mais precisos e com maior chance de sucesso.
